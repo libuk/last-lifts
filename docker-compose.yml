@@ -9,7 +9,7 @@ services:
     restart: always
     working_dir: /var/www/
     volumes:
-      - ../src:/var/www
+      - ./src:/var/www
   nginx:
     image: nginx:1.19-alpine
     container_name: lastlifts-nginx
@@ -17,9 +17,12 @@ services:
     ports:
       - 8000:80
     volumes:
-      - ../src:/var/www
+      - ./src:/var/www
       - ./nginx:/etc/nginx/conf.d
   db:
+    build:
+      context: ./
+      dockerfile: DB_Dockerfile
     image: mysql
     container_name: lastlifts-mysql
     restart: always
