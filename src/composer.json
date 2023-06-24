@@ -1,0 +1,17 @@
+{
+    "name": "libuk/last-lifts",
+    "description": "An app powerlifting tracking",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Libuk\\LastLifts\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Daniel Liburd",
+            "email": "daniel.liburd@gmail.com"
+        }
+    ],
+    "require": {}
+}
