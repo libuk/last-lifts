@@ -3,6 +3,7 @@
 ## Running the app locally
 
 ```bash
+$ cd ./docker
 $ docker-compose up
 ```
 
