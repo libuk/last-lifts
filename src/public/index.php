@@ -63,9 +63,11 @@ if ($_SERVER['REQUEST_URI'] === '/login' && $_SERVER['REQUEST_METHOD'] === 'POST
     $dbPass = $_ENV['DB_PASS'];
     $dbCharset = $_ENV['DB_CHARSET'];
 
+    $cleanedEmail = htmlspecialchars($_POST['email']);
+
     $dbh = new PDO("{$dbType}:host={$dbHost};dbname={$dbName};charset={$dbCharset}", $dbUser, $dbPass);
     $query = $dbh->prepare("SELECT user_name, user_password_hash FROM users WHERE user_email = ?");
-    $query->execute([$_POST['email']]);
+    $query->execute([$cleanedEmail]);
 
     $result = $query->fetch(PDO::FETCH_ASSOC);
 
