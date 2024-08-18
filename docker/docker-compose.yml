@@ -23,7 +23,7 @@ services:
     build:
       context: ../
       dockerfile: ./docker/DockerfileDb
-    image: mysql
+    image: mysql:8.0.32
     container_name: lastlifts-mysql
     restart: always
     command: --default-authentication-plugin=caching_sha2_password
