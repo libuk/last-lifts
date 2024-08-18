@@ -7,5 +7,4 @@ $ cd ./docker
 $ docker-compose up
 ```
 
-Open `http://localhost:8000`.
-
+Open `http://localhost:8000/login`.
