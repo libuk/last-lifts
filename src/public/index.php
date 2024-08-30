@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_URI'] === '/login' && $_SERVER['REQUEST_METHOD'] === 'POST
     $cleanedEmail = htmlspecialchars($_POST['email']);
 
     $dbh = new PDO("{$dbType}:host={$dbHost};dbname={$dbName};charset={$dbCharset}", $dbUser, $dbPass);
-    $query = $dbh->prepare("SELECT user_name, user_password_hash FROM users WHERE user_email = ?");
+    $query = $dbh->prepare("SELECT user_name, password_hash FROM lifters WHERE email = ?");
     $query->execute([$cleanedEmail]);
 
     $result = $query->fetch(PDO::FETCH_ASSOC);
@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_URI'] === '/login' && $_SERVER['REQUEST_METHOD'] === 'POST
       die();
     }
 
-    if (!password_verify($_POST['password'], $result['user_password_hash'])) {
+    if (!password_verify($_POST['password'], $result['password_hash'])) {
       header($_SERVER['SERVER_PROTOCOL'] . ' 401 Unauthorized');
 
       # TODO: remove password specific feedback before deploying to production.
