@@ -6,8 +6,6 @@ services:
     container_name: lastlifts-app
     restart: always
     working_dir: /var/www/
-    volumes:
-      - ../src:/var/www
   nginx:
     image: nginx:1.19-alpine
     container_name: lastlifts-nginx
